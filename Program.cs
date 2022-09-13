@@ -6,58 +6,25 @@ namespace GraphMop
     {
         static void Main()
         {
-            Console.WriteLine("Укажите кол-во вершин");
-            var size = int.Parse(Console.ReadLine());
-            var matrix = new Matrix(size);
-            Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, чтобы выйди из редактирование введите \"-1\"");
-            while (true)
+            //Console.Write("Укажите кол-во вершин первой доли -> ");
+            //var leftPart = int.Parse(Console.ReadLine());
+            //Console.Write("Укажите кол-во вершин второй доли -> ");
+            //var rightPart = int.Parse(Console.ReadLine());
+            //var matrix = new Matrix(leftPart + rightPart);
+            //Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, чтобы выйди из редактирование введите \"-1\"");
+            //matrix.SetMatrixEdges();
+            //matrix.PrintAdjacencyMatrix();
+            //var weightedGraph = new Graph(leftPart,rightPart);
+            var graph = new Graph(4, 2);
+            graph.SetWeightGraph(new int[6,6]);
+            for (int i = 0; i < graph.Size; i++)
             {
-
-                Console.WriteLine("Номер первой вершины");
-                int FirstPoint = int.Parse(Console.ReadLine());
-                if (FirstPoint == -1)
-                    break;
-                Console.WriteLine("Номер второй вершины");
-                int SecondPoint = int.Parse(Console.ReadLine());
-                if (FirstPoint != SecondPoint)
-                    matrix.AdjacencyMatrix[FirstPoint - 1, SecondPoint - 1] = 1;
-            }
-            for (int i = 0; i < matrix.Size; i++)
-            {
-                for (int j = 0; j < matrix.Size; j++)
+                for (int j = 0; j < graph.Size; j++)
                 {
-                    Console.Write(matrix.AdjacencyMatrix[i, j] + " ");
+                    Console.Write(graph.WeightedGraph[i, j]); 
                 }
                 Console.WriteLine();
             }
         }
     }
-
-    class Matrix
-    {
-        public readonly int Size;
-        public readonly int[,] AdjacencyMatrix; // матрица смежности
-        public int[,] WeightedGraph;  // нагруженный граф
-        public int[,] IncrementGraph; // граф приращения
-        public Matrix(int size)
-        {
-            Size = size;
-            AdjacencyMatrix = new int[size, size]; 
-            WeightedGraph = new int[size, size];
-            IncrementGraph = new int[size, size];
-        }   
-
-        public void ChangeIncrementGraph(int[,] graph)
-        {
-
-        }
-
-        public void ChangeWeightedGraph(int[,] matrix)
-        {
-
-        }
-
-        public void
-    }
-
 }
