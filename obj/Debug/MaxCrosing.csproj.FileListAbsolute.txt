@@ -1,0 +1,8 @@
+D:\Repositories\MaxCrossing\bin\Debug\GraphMop.exe.config
+D:\Repositories\MaxCrossing\bin\Debug\GraphMop.exe
+D:\Repositories\MaxCrossing\bin\Debug\GraphMop.pdb
+D:\Repositories\MaxCrossing\obj\Debug\MaxCrosing.csproj.AssemblyReference.cache
+D:\Repositories\MaxCrossing\obj\Debug\MaxCrosing.csproj.SuggestedBindingRedirects.cache
+D:\Repositories\MaxCrossing\obj\Debug\MaxCrosing.csproj.CoreCompileInputs.cache
+D:\Repositories\MaxCrossing\obj\Debug\GraphMop.exe
+D:\Repositories\MaxCrossing\obj\Debug\GraphMop.pdb
