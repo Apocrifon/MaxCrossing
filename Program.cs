@@ -19,12 +19,15 @@ namespace GraphMop
             graph.SetWeightGraph();
             graph.SetDirectionInfo();
             graph.SetIncrementGraph();// либо прошлое работает правильно а это нет
-            //matrix.PrintAdjacencyMatrix();
-            //Graph.PringGraph(graph.ConnectionGraph);
             //Console.WriteLine();
-            //Graph.PringGraph(graph.WeightedGraph);
+            //matrix.PrintAdjacencyMatrix();  матрица смежности 2 долей
             //Console.WriteLine();
-            //Graph.PringGraph(graph.IncrementGraph);
+            //Graph.PringGraph(graph.ConnectionGraph); матрица смежности графа
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.WeightedGraph); матрица нагруженного графа
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.IncrementGraph);  матрица орграфа приращения
+            //Console.WriteLine();
             var alg = new Algorithm();
             do
             {
@@ -36,6 +39,7 @@ namespace GraphMop
 
                 graph.SetIncrementGraph();
                 //Graph.PringGraph(graph.WeightedGraph);
+                //Console.WriteLine();
                 //Graph.PringGraph(graph.IncrementGraph);
                 //Console.WriteLine();
             }
