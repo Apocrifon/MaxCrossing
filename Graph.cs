@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.AccessControl;
 
 namespace GraphMop
 {
@@ -17,12 +15,13 @@ namespace GraphMop
         //public int[,] Weight;
         public enum Reach
         {
-            z=0,
-            o=1,
+            zero=0,
+            one=1,
             x=-1
         };
         public enum Direction
         {
+            noWay=-1,
             back = 0,
             front =1,
         };
@@ -31,7 +30,7 @@ namespace GraphMop
         {
             inf=1,
             zero=0,
-            nw=-1
+            noWay=-1
         };
 
         public Graph(int left, int right)
@@ -99,12 +98,11 @@ namespace GraphMop
             for (int i = 1; i < Left+1 ; i++)
             {
                 ConnectionGraph[0,i] = 1;
-                ConnectionGraph[i, 0] = 1;
             }
             for (int i = Size-2; i > Left ; i--)
             {
                 ConnectionGraph[Size-1, i] = 1;
-                ConnectionGraph[i, Size - 1] = 1;
+                ConnectionGraph[i, Size-1] = 1;
             }
             for (int i = 0; i < Left+Right; i++)
             {
@@ -126,8 +124,8 @@ namespace GraphMop
                 {
                     if (ConnectionGraph[i, j] == 1)
                     {
-                        WeightedGraph[i, j] = Reach.z;
-                        WeightedGraph[j, i] = Reach.z;
+                        WeightedGraph[i, j] = Reach.zero;
+                        WeightedGraph[j, i] = Reach.zero;
                     }
                 }
             }
@@ -139,6 +137,8 @@ namespace GraphMop
             {
                 for (int j = i; j < Size; j++)
                 {
+                    DirectionInfo[i, j] = Direction.noWay;
+                    DirectionInfo[j, i] = Direction.noWay;
                     if (ConnectionGraph[i, j] == 1)
                     {
                         DirectionInfo[i, j] = Direction.front;
@@ -152,18 +152,23 @@ namespace GraphMop
         {
             for (int i = 0; i < Size; i++)
             {
-                for (int j = 0; j < Size; j++)
+                for (int j = i; j < Size; j++)
                 {
-                    if (WeightedGraph[i, j] == Reach.z && DirectionInfo[i, j] == Direction.front)
-                        IncrementGraph[i, j] = Weight.zero;
-                    else if (WeightedGraph[i, j] == Reach.o && DirectionInfo[i, j] == Direction.front)
+                    if (WeightedGraph[i, j] == Reach.one)
+                    {
                         IncrementGraph[i, j] = Weight.inf;
-                    else if (WeightedGraph[i, j] == Reach.z && DirectionInfo[i, j] == Direction.back)
-                        IncrementGraph[i, j] = Weight.inf;
-                    else if (WeightedGraph[i, j] == Reach.o && DirectionInfo[i, j] == Direction.back)
+                        IncrementGraph[j, i] = Weight.zero;
+                    }
+                    else if (WeightedGraph[i, j] == Reach.zero)
+                    {
                         IncrementGraph[i, j] = Weight.zero;
+                        IncrementGraph[j, i] = Weight.inf;
+                    }
                     else
-                        IncrementGraph[i, j] = Weight.nw;
+                    {
+                        IncrementGraph[i, j] = Weight.noWay;
+                        IncrementGraph[j, i] = Weight.noWay;
+                    }
                 }
             }
         }
@@ -185,36 +190,31 @@ namespace GraphMop
         {
             for (int i = 0; i < way.Count-1; i++)
             {
-                WeightedGraph[way[i], way[i + 1]] = Reach.o;
-                WeightedGraph[way[i + 1], way[i]] = Reach.o;
+                if (DirectionInfo[way[i], way[i + 1]] == Direction.front)
+                {
+                    WeightedGraph[way[i], way[i + 1]] = Reach.one;
+                    WeightedGraph[way[i + 1], way[i]] = Reach.one;
+                }
+                else
+                {
+                    WeightedGraph[way[i], way[i + 1]] = Reach.zero;
+                    WeightedGraph[way[i + 1], way[i]] = Reach.zero;
+                }
             }
         }
 
         public void PringAnswer()
         {
+            Console.WriteLine("Ответ представлен в виде номеров вершин образующих ребро(паросочетание)");
+            Console.WriteLine("Паросочетания:");
             for (int i = 1; i < Left + 1; i++)
             {
                 for (int j = Left + 1; j < WeightedGraph.GetLength(0) - 1; j++)
                 {
-                    if (ConnectionGraph[i, j] == 1 && WeightedGraph[i, j] == Graph.Reach.o)
+                    if (ConnectionGraph[i, j] == 1 && WeightedGraph[i, j] == Graph.Reach.one)
                         Console.WriteLine(i + " " + j);
                 }
             }
         }
     }
-
-
-
-
 }
-//public enum Reach
-//{
-//    z = 0,
-//    o = 1,
-//    x = -1
-//};
-//public enum Direction
-//{
-//    back = 0,
-//    front = 1,
-//};

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml;
 
 namespace GraphMop
 {
@@ -23,23 +22,26 @@ namespace GraphMop
             graph.SetWeightGraph();
             graph.SetDirectionInfo();
             //Graph.PringGraph(graph.WeightedGraph);
-            graph.SetIncrementGraph(); // либо прошлое работает правильно а это нет
+            //Console.WriteLine();
+            graph.SetIncrementGraph();              // либо прошлое работает правильно а это нет
             //Console.WriteLine();
             //Graph.PringGraph(graph.IncrementGraph);
             var alg = new Algorithm();
             do
             {
-                alg.Roads.Clear();
-                alg.CelectedPeaks.Clear();
-                alg.CelectedPeaks.Add(0);
+                alg.ClearLists();
                 alg.MinWay(graph.IncrementGraph, 0);
                 if (alg.Roads.Count == 0)
                     break;
                 graph.ChangeWeightGraph(alg.ChooseBestWay());
+                //Graph.PringGraph(graph.WeightedGraph);
+                Console.WriteLine();
                 graph.SetIncrementGraph();
+                //Graph.PringGraph(graph.IncrementGraph);
+                Console.WriteLine();
             }
             while (alg.Roads.Count > 0);
-            graph.PringAnswer();                
-        }
+            graph.PringAnswer();           
+            }
     }
 }

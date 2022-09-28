@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphMop
 {
@@ -46,6 +44,13 @@ namespace GraphMop
                     result=item;
             }
             return result;
+        }
+
+        public void ClearLists()
+        {
+            Roads.Clear();
+            CelectedPeaks.Clear();
+            CelectedPeaks.Add(0);
         }
 
     }
