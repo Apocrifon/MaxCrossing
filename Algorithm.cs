@@ -24,6 +24,7 @@ namespace GraphMop
                 if (index == graph.GetLength(0) - 1)
                 {
                     Roads.Add(CelectedPeaks.GetRange(0,CelectedPeaks.Count).ToList());
+                    CelectedPeaks.RemoveAt(CelectedPeaks.Count - 1);
                     break;
                 }
                 if (graph[index, i] == Graph.Weight.zero && i != 0)
@@ -35,6 +36,17 @@ namespace GraphMop
                     CelectedPeaks.RemoveAt(CelectedPeaks.Count - 1);
             }   
         } 
+
+        public List<int> ChooseBestWay()
+        {
+            var result = Roads[0];
+            foreach (var item in Roads)
+            {
+                if (item.Count < result.Count)
+                    result=item;
+            }
+            return result;
+        }
 
     }
 }

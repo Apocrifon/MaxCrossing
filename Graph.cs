@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.AccessControl;
 
@@ -179,7 +180,19 @@ namespace GraphMop
                 Console.WriteLine();
             }
         }
+
+        public void ChangeWeightGraph(List <int> way)
+        {
+            for (int i = 0; i < way.Count-1; i++)
+            {
+                WeightedGraph[i, i + 1] = Reach.o;
+                WeightedGraph[i + 1, i] = Reach.o;
+            }
+        }
     }
+
+
+
 
 }
 //public enum Reach
