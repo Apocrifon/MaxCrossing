@@ -185,8 +185,8 @@ namespace GraphMop
         {
             for (int i = 0; i < way.Count-1; i++)
             {
-                WeightedGraph[i, i + 1] = Reach.o;
-                WeightedGraph[i + 1, i] = Reach.o;
+                WeightedGraph[way[i], way[i + 1]] = Reach.o;
+                WeightedGraph[way[i + 1], way[i]] = Reach.o;
             }
         }
     }
