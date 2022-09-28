@@ -51,7 +51,7 @@ namespace GraphMop
             {
                 for (int j = 0; j < graph.GetLength(0); j++)
                 {
-                    Console.Write(graph[i, j] + " ");
+                    Console.Write(graph[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -63,7 +63,7 @@ namespace GraphMop
             {
                 for (int j = 0; j < graph.GetLength(0); j++)
                 {
-                    Console.Write(graph[i, j] + " ");
+                    Console.Write(graph[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -75,7 +75,7 @@ namespace GraphMop
             {
                 for (int j = 0; j < graph.GetLength(0); j++)
                 {
-                    Console.Write(graph[i, j] + " ");
+                    Console.Write(graph[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -87,7 +87,7 @@ namespace GraphMop
             {
                 for (int j = 0; j < graph.GetLength(0); j++)
                 {
-                    Console.Write((int)graph[i, j] + " ");
+                    Console.Write((int)graph[i, j] + "\t");
                 }
                 Console.WriteLine();
             }

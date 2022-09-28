@@ -8,7 +8,6 @@ namespace GraphMop
 {
     class Algorithm
     {
-        int CurentIndex;
         public List<int> CelectedPeaks;
         public List<List<int>> Roads;
 
@@ -18,25 +17,23 @@ namespace GraphMop
             Roads = new List<List<int>>();
         }
 
-        public void MinWay(int[,] graph, int index)
+        public void MinWay(Graph.Weight[,] graph, int index)
         {
-            for (int i = 1; i <graph.Length; i++)
+            for (int i = 1; i <graph.GetLength(0); i++)
             {
-                bool findway=false;
-                if (index == graph.Length - 1)
+                if (index == graph.GetLength(0) - 1)
                 {
-                    findway=true;
-                    Roads.Add(CelectedPeaks);
+                    Roads.Add(CelectedPeaks.GetRange(0,CelectedPeaks.Count).ToList());
                     break;
                 }
-                if (graph[index, i] == 0 && i != 0)
+                if (graph[index, i] == Graph.Weight.zero && i != 0)
                 {
                     CelectedPeaks.Add(i);
                     MinWay(graph, i);
                 }
-                if (i == graph.Length && findway == false)
+                if (i == graph.GetLength(0) - 1 && CelectedPeaks.Count>0)
                     CelectedPeaks.RemoveAt(CelectedPeaks.Count - 1);
-            }
+            }   
         } 
 
     }
