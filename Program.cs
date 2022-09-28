@@ -36,12 +36,7 @@ namespace GraphMop
                 if (alg.Roads.Count == 0)
                     break;
                 graph.ChangeWeightGraph(alg.ChooseBestWay());
-
                 graph.SetIncrementGraph();
-                //Graph.PringGraph(graph.WeightedGraph);
-                //Console.WriteLine();
-                //Graph.PringGraph(graph.IncrementGraph);
-                //Console.WriteLine();
             }
             while (alg.Roads.Count > 0);
             graph.PringAnswer();           
