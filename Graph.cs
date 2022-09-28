@@ -11,13 +11,12 @@ namespace GraphMop
         public int[,] ConnectionGraph; //матрица связности
         public Reach[,] WeightedGraph; // нагруженный граф
         public Weight[,] IncrementGraph; // граф приращения
-        public Direction[,] DirectionInfo;
-        //public int[,] Weight;
+        public Direction[,] DirectionInfo; // показывает направление дуги
         public enum Reach
         {
             zero=0,
             one=1,
-            x=-1
+            noWay=-1
         };
         public enum Direction
         {
@@ -117,7 +116,7 @@ namespace GraphMop
         {
             for (int i = 0; i < Size; i++)
                 for (int j = 0; j < Size; j++)
-                    WeightedGraph[i, j] = Reach.x;
+                    WeightedGraph[i, j] = Reach.noWay;
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
@@ -170,19 +169,6 @@ namespace GraphMop
                         IncrementGraph[j, i] = Weight.noWay;
                     }
                 }
-            }
-        }
-
-        public void PrintMaxCrosing()
-        {
-            for (int i = 1; i < Left; i++)
-            {
-                for (int j = Left; j < IncrementGraph.Length-1; j++)
-                {
-                    if (IncrementGraph[i,j]==Weight.inf)
-                        Console.Write(i+1 + " " + j+1);
-                }
-                Console.WriteLine();
             }
         }
 

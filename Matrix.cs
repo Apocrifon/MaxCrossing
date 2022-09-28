@@ -30,30 +30,15 @@ namespace GraphMop
 
         public void PrintAdjacencyMatrix()
         {
-            Console.Write("  ");
-            for (int i = 0; i < Size; i++)
-                Console.Write(i+1 + " ");
-            Console.WriteLine();
-            Console.Write(" ");
-            for (int i = 0; i < Size; i++)
-                Console.Write("__");
-            Console.Write("__");
-            Console.WriteLine();
             for (int i = 0; i < Size; i++)
             {
-                Console.Write(i+1 + "|");
                 for (int j = 0; j < Size; j++)
                 {
                     Console.Write(AdjacencyMatrix[i, j] + " ");
                 }
-                Console.Write("|");
                 Console.WriteLine();
             }
-            Console.Write(" ");
-            for (int i = 0; i < Size; i++)
-                Console.Write("--");
-            Console.Write("--");
-            Console.WriteLine();
+
         }
     }
 }
