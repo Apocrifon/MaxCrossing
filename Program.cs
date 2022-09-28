@@ -18,9 +18,8 @@ namespace GraphMop
             graph.SetConnectionGraph(matrix.AdjacencyMatrix);
             graph.SetWeightGraph();
             graph.SetDirectionInfo();
-
             graph.SetIncrementGraph();// либо прошлое работает правильно а это нет
-            matrix.PrintAdjacencyMatrix();
+            //matrix.PrintAdjacencyMatrix();
             //Graph.PringGraph(graph.ConnectionGraph);
             //Console.WriteLine();
             //Graph.PringGraph(graph.WeightedGraph);
