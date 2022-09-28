@@ -189,6 +189,18 @@ namespace GraphMop
                 WeightedGraph[way[i + 1], way[i]] = Reach.o;
             }
         }
+
+        public void PringAnswer()
+        {
+            for (int i = 1; i < Left + 1; i++)
+            {
+                for (int j = Left + 1; j < WeightedGraph.GetLength(0) - 1; j++)
+                {
+                    if (ConnectionGraph[i, j] == 1 && WeightedGraph[i, j] == Graph.Reach.o)
+                        Console.WriteLine(i + " " + j);
+                }
+            }
+        }
     }
 
 

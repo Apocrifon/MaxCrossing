@@ -14,18 +14,18 @@ namespace GraphMop
             var matrix = new Matrix(leftPart + rightPart);
             Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, чтобы выйди из редактирование введите \"-1\"");
             matrix.SetMatrixEdges();
-            matrix.PrintAdjacencyMatrix();
+            //matrix.PrintAdjacencyMatrix();
             Console.WriteLine();
             var graph = new Graph(leftPart, rightPart);
             graph.SetConnectionGraph(matrix.AdjacencyMatrix);
-            Graph.PringGraph(graph.ConnectionGraph);
-            Console.WriteLine();
+            //Graph.PringGraph(graph.ConnectionGraph);
+            //Console.WriteLine();
             graph.SetWeightGraph();
             graph.SetDirectionInfo();
-            Graph.PringGraph(graph.WeightedGraph);
+            //Graph.PringGraph(graph.WeightedGraph);
             graph.SetIncrementGraph(); // либо прошлое работает правильно а это нет
-            Console.WriteLine();
-            Graph.PringGraph(graph.IncrementGraph);
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.IncrementGraph);
             var alg = new Algorithm();
             do
             {
@@ -39,14 +39,7 @@ namespace GraphMop
                 graph.SetIncrementGraph();
             }
             while (alg.Roads.Count > 0);
-            for (int i = 1; i < leftPart+1; i++)
-            {
-                for (int j = leftPart + 1; j < graph.WeightedGraph.GetLength(0)-1; j++)
-                {
-                    if (graph.ConnectionGraph[i,j]==1 && graph.WeightedGraph[i,j]==Graph.Reach.o)
-                        Console.WriteLine(i + " "+ j);
-                }
-            }                    
+            graph.PringAnswer();                
         }
     }
 }
