@@ -31,7 +31,7 @@ namespace GraphMop
                     MinWay(graph, i);
                 }
                 if (i == graph.GetLength(0) - 1 && CelectedPeaks.Count>0)
-                    CelectedPeaks.RemoveAt(CelectedPeaks.Count - 1);
+                    CelectedPeaks.RemoveAt(CelectedPeaks.Count - 1);    
             }   
         } 
 
