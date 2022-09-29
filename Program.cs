@@ -11,7 +11,7 @@ namespace GraphMop
             Console.Write("Укажите кол-во вершин второй доли -> ");
             var rightPart = int.Parse(Console.ReadLine());
             var matrix = new Matrix(leftPart + rightPart);
-            Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, чтобы выйди из редактирование введите \"-1\"");
+            Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, для этого укажите номера вершин образующих ребра\n чтобы выйди из редактирование введите \"-1\"");
             matrix.SetMatrixEdges();
             Console.WriteLine();
             var graph = new Graph(leftPart, rightPart);
