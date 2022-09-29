@@ -11,23 +11,23 @@ namespace GraphMop
             Console.Write("Укажите кол-во вершин второй доли -> ");
             var rightPart = int.Parse(Console.ReadLine());
             var matrix = new Matrix(leftPart + rightPart);
-            Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, для этого укажите номера вершин образующих ребра\n чтобы выйди из редактирование введите \"-1\"");
+            Console.WriteLine("Укажите ребра соединяющие вершины каждой доли, для этого укажите номера вершин образующих ребра\nЧтобы выйди из редактирование введите \"-1\"");
             matrix.SetMatrixEdges();
             Console.WriteLine();
             var graph = new Graph(leftPart, rightPart);
             graph.SetConnectionGraph(matrix.AdjacencyMatrix);
             graph.SetWeightGraph();
             graph.SetDirectionInfo();
-            graph.SetIncrementGraph();// либо прошлое работает правильно а это нет
-            Console.WriteLine();
-            matrix.PrintAdjacencyMatrix();  //матрица смежности 2 долей
-            Console.WriteLine();
-            Graph.PringGraph(graph.ConnectionGraph); //матрица смежности графа
-            Console.WriteLine();
-            Graph.PringGraph(graph.WeightedGraph); //матрица нагруженного графа
-            Console.WriteLine();
-            Graph.PringGraph(graph.IncrementGraph); //матрица орграфа приращения
-            Console.WriteLine();
+            graph.SetIncrementGraph();
+            //Console.WriteLine();
+            //matrix.PrintAdjacencyMatrix();  матрица смежности 2 долей
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.ConnectionGraph); матрица смежности графа
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.WeightedGraph); матрица нагруженного графа
+            //Console.WriteLine();
+            //Graph.PringGraph(graph.IncrementGraph);  матрица орграфа приращения
+            //Console.WriteLine();
             var alg = new Algorithm();
             do
             {

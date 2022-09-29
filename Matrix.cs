@@ -17,11 +17,11 @@ namespace GraphMop
         {
             while (true)
             {
-                Console.Write("Номер первой вершины -> ");
+                Console.Write("Номер первой вершины, образующей ребро -> ");
                 int FirstPoint = int.Parse(Console.ReadLine());
                 if (FirstPoint == -1)
                     break;
-                Console.Write("Номер второй вершины -> ");
+                Console.Write("Номер второй вершины, образующей ребро -> ");
                 int SecondPoint = int.Parse(Console.ReadLine());
                 if (FirstPoint != SecondPoint)
                     AdjacencyMatrix[FirstPoint - 1, SecondPoint - 1] = 1;
